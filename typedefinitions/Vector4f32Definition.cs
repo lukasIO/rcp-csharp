@@ -1,5 +1,5 @@
 using System.IO;
-using System.Numerics;
+using UnityEngine;
 
 using Kaitai;
 using RCP.IO;
@@ -8,9 +8,9 @@ namespace RCP.Types
 {
     public class Vector4f32Definition : NumberDefinition<Vector4>
     {
-        protected override Vector4 DefaultMinimum => new Vector4(float.MinValue);
-        protected override Vector4 DefaultMaximum => new Vector4(float.MaxValue);
-        protected override Vector4 DefaultMulitpleOf => new Vector4(0.01f);
+        protected override Vector4 DefaultMinimum => new Vector4(float.MinValue,float.MinValue,float.MinValue,float.MinValue);
+        protected override Vector4 DefaultMaximum => new Vector4(float.MaxValue,float.MaxValue,float.MaxValue,float.MaxValue);
+        protected override Vector4 DefaultMulitpleOf => new Vector4(0.01f,0.01f,0.01f,0.01f);
 
         public override Vector4 ReadValue(KaitaiStream input)
         {
@@ -19,10 +19,10 @@ namespace RCP.Types
 
         public override void WriteValue(BinaryWriter writer, Vector4 value)
         {
-            writer.Write(value.X, ByteOrder.BigEndian);
-            writer.Write(value.Y, ByteOrder.BigEndian);
-            writer.Write(value.Z, ByteOrder.BigEndian);
-            writer.Write(value.W, ByteOrder.BigEndian);
+            writer.Write(value.x, ByteOrder.BigEndian);
+            writer.Write(value.y, ByteOrder.BigEndian);
+            writer.Write(value.z, ByteOrder.BigEndian);
+            writer.Write(value.w, ByteOrder.BigEndian);
         }
     }
 }

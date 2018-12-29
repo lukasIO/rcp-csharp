@@ -3,7 +3,7 @@ using System.IO;
 using Kaitai;
 
 using RCP.Protocol;
-using System.Drawing;
+using UnityEngine;
 using RCP.Parameters;
 
 namespace RCP.Types
@@ -11,7 +11,7 @@ namespace RCP.Types
     public class RGBDefinition : DefaultDefinition<Color>
     {
         public RGBDefinition()
-            : base(RcpTypes.Datatype.Rgb, Color.Black)
+            : base(RcpTypes.Datatype.Rgb, Color.black)
         {
         }
 
@@ -23,14 +23,14 @@ namespace RCP.Types
             var g = input.ReadU1();
             var r = input.ReadU1();
             var a = input.ReadU1(); // Server send alpha?
-            return Color.FromArgb(255, r, g, b);
+            return new Color(r,g,b,255);
         }
 
         public override void WriteValue(BinaryWriter writer, Color value)
         {
-            writer.Write((byte)value.B);
-            writer.Write((byte)value.G);
-            writer.Write((byte)value.R);
+            writer.Write((byte)value.b);
+            writer.Write((byte)value.r);
+            writer.Write((byte)value.g);
             writer.Write((byte)255);
         }
     }

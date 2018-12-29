@@ -1,14 +1,13 @@
 using System;
 using System.IO;
 using Kaitai;
-
+using UnityEngine;
 using RCP.Protocol;
 using RCP.Exceptions;
 using RCP.Parameters;
 using System.Collections.Generic;
 using System.Threading;
-using System.Drawing;
-using System.Numerics;
+
 
 namespace RCP.Types
 {
@@ -75,13 +74,13 @@ namespace RCP.Types
                     break;
             }
 
-            if (type == typeof(Color))
+            if (type == typeof(UnityEngine.Color))
                 return RcpTypes.Datatype.Rgba;
-            if (type == typeof(Vector2))
+            if (type == typeof(UnityEngine.Vector2))
                 return RcpTypes.Datatype.Vector2f32;
-            if (type == typeof(Vector3))
+            if (type == typeof(UnityEngine.Vector3))
                 return RcpTypes.Datatype.Vector3f32;
-            if (type == typeof(Vector4))
+            if (type == typeof(UnityEngine.Vector4))
                 return RcpTypes.Datatype.Vector4f32;
 
             throw new NotSupportedException();
